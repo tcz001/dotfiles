@@ -1,0 +1,75 @@
+filetype plugin indent on
+set nocursorline " don't highlight current line
+set foldmethod=syntax
+
+" keyboard shortcuts
+inoremap jj <ESC>
+" fix Esc conflict using neoCompletion
+iunmap <Esc>
+
+" gui settings
+if (&t_Co == 256 || has('gui_running'))
+    if ($TERM_PROGRAM == 'iTerm.app')
+        let g:solarized_termcolors=16
+        set background=dark
+        color solarized
+    else
+        colorscheme desert
+    endif
+else
+    colorscheme desert
+endif
+"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+" cscope setting
+"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+if has("cscope")
+  set csprg=/usr/local/bin/cscope
+  set csto=1
+  set cst
+  set nocsverb
+  " add any database in current directory
+  if filereadable("cscope.out")
+      cs add cscope.out
+  endif
+  set csverb
+endif
+" cscope min config
+nnoremap <leader>fa :call CscopeFindInteractive(expand('<cword>'))<CR>
+nnoremap <leader>l :call ToggleLocationList()<CR>
+" s: Find this C symbol
+nnoremap  <leader>fs :call CscopeFind('s', expand('<cword>'))<CR>
+" g: Find this definition
+nnoremap  <leader>fg :call CscopeFind('g', expand('<cword>'))<CR>
+" d: Find functions called by this function
+nnoremap  <leader>fd :call CscopeFind('d', expand('<cword>'))<CR>
+" c: Find functions calling this function
+nnoremap  <leader>fc :call CscopeFind('c', expand('<cword>'))<CR>
+" t: Find this text string
+nnoremap  <leader>ft :call CscopeFind('t', expand('<cword>'))<CR>
+" e: Find this egrep pattern
+nnoremap  <leader>fe :call CscopeFind('e', expand('<cword>'))<CR>
+" f: Find this file
+nnoremap  <leader>ff :call CscopeFind('f', expand('<cword>'))<CR>
+" i: Find files #including this file
+nnoremap  <leader>fi :call CscopeFind('i', expand('<cword>'))<CR>
+" set clang complete options
+let g:clang_debug = 1
+let g:clang_library_path     = '/usr/local/opt/llvm/lib/libclang.dylib'
+" let g:clang_use_library      = 1
+" let g:clang_complete_auto    = 1
+" let g:clang_hl_errors        = 1
+" let g:clang_auto_select      = 1
+" let g:clang_complete_copen   = 1
+" let g:clang_complete_macros  = 1
+" let g:clang_complete_patters = 1
+" let g:clang_periodic_quickfix= 1
+" let g:clang_snippets         = 1
+" let g:clang_close_preview    = 1
+" let g:clang_user_options='-stdlib=libc++ -std=c++11 -IIncludePath'
+" set completeopt=menu,longest
+let g:ycm_confirm_extra_conf = 0
+
+
+" set golang
+let g:go_fmt_command = "goimports"
+

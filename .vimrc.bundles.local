@@ -1,4 +1,5 @@
-" Bundle 'c.vim'
-" Bundle 'brookhong/cscope.vim'
+Bundle 'c.vim'
+Bundle 'brookhong/cscope.vim'
 Bundle 'rdnetto/YCM-Generator'
 Bundle 'gcov.vim'
+Bundle 'nsf/gocode', {'rtp': 'vim/'}

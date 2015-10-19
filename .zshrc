@@ -64,9 +64,8 @@ alias cl='clear'
 alias git='nocorrect git'
 alias vim='nvim'
 alias chrome='open -a /Applications/Google\ Chrome.app'
-alias ga='echo $(python /Users/twer/dev/bash-vpn/totp.py) > pbcopy'
+alias ga='echo $(python /Users/twer/dev/bash-vpn/totp.py) | pbcopy'
 alias gdbnew='/usr/local/Cellar/gdb/7.9.1/bin/gdb'
-alias rm='rm -i --preserve-root'
 
 export PATH=${PATH}:~/dev/adt-bundle/sdk/platform-tools:~/dev/adt-bundle/sdk/tools # Add PhoneGap
 
@@ -94,6 +93,9 @@ alias gpu='git push'
 alias gd='git diff'
 export XML_CATALOG_FILES=/usr/local/etc/xml/catalog
 
+### ccache
 export PATH=${PATH}:/usr/local/opt/ccache/libexec
 export PATH=${PATH}:/usr/local/opt/llvm/bin
 
+### android
+export ANDROID_HOME=~/dev/adt-bundle/sdk/

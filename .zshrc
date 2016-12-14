@@ -45,19 +45,18 @@ plugins=(git svn ruby rails brew gem rvm bundle mvn sbt jekyll gpg2 haxe go)
 
 source $ZSH/oh-my-zsh.sh
 
-# Customize to your needs...
-export PATH=$PATH:/usr/bin:/bin:/usr/sbin:/sbin:/usr/local/bin:~/bin
 export CLICOLOR=1
 export LSCOLORS=fxbxaxdxcxegedabagacad
 export TERM=xterm-color
-export JAVA_HOME=/Library/Java/JavaVirtualMachines/jdk1.7.0_25.jdk/Contents/Home/
-export DYLD_LIBRARY_PATH=/opt/oracle/instantclient_11_2/
 export GOPATH=$HOME/go/
 alias tw='cd ~/talks'
 alias ta='cd ~/dev/TA-Probation'
+alias ec='cd ~/dev/ecool'
 alias ca='cd ~/dev/carnival'
-alias we='cd ~/dev/wechat'
 alias st='cd ~/dev/strike'
+alias hl='cd ~/dev/hyperledger'
+alias dl='cd ~/dev/deeplearning'
+alias vr='cd ~/dev/vr'
 alias ls='ls -a'
 alias ll='ls -al'
 alias cl='clear'
@@ -65,37 +64,60 @@ alias git='nocorrect git'
 alias vim='nvim'
 alias chrome='open -a /Applications/Google\ Chrome.app'
 alias ga='echo $(python /Users/twer/dev/bash-vpn/totp.py) | pbcopy'
+alias gita='echo $(python /Users/twer/dev/bash-vpn/totp_github.py) | pbcopy'
 alias gdbnew='/usr/local/Cellar/gdb/7.9.1/bin/gdb'
+alias killl='kill -9'
 
-export PATH=${PATH}:~/dev/adt-bundle/sdk/platform-tools:~/dev/adt-bundle/sdk/tools # Add PhoneGap
-
-# added by travis gem
+# Travis
 [ -f /Users/twer/.travis/travis.sh ] && source /Users/twer/.travis/travis.sh
 
-### Added by the Heroku Toolbelt
-export PATH="/usr/local/heroku/bin:$PATH"
-
-PATH=$PATH:$HOME/.rvm/bin # Add RVM to PATH for scripting
-PATH=$PATH:/Applications/Octave-cli.app/Contents/MacOS
-export ANT_OPTS="-Xms512m -Xmx1024m"
-export PATH=/Users/twer/pebble-dev/PebbleSDK-current/bin:$PATH
-PATH=$PATH:/Users/twer/node_modules/karma/bin
-PATH=$PATH:/Applications/Postgres.app/Contents/Versions/9.4/bin
+# PATH
+PATH=$PATH:/usr/bin:/bin:/usr/sbin:/sbin:/usr/local/bin:~/bin:/Users/twer/.local/bin:/usr/local/sbin
 PATH=$PATH:$GOPATH/bin
+## RVM
+PATH=$PATH:$HOME/.rvm/bin
+## Postgres
+PATH=$PATH:/Applications/Postgres.app/Contents/Versions/9.4/bin
+## Heroku
+PATH=$PATH:/usr/local/heroku/bin
+## PhoneGap
+PATH=$PATH:~/dev/adt-bundle/sdk/platform-tools:~/dev/adt-bundle/sdk/tools
+## ccache
+PATH=$PATH:/usr/local/opt/ccache/libexec
+PATH=$PATH:/usr/local/opt/llvm/bin
+## Conda
+PATH=$PATH:/Users/twer/miniconda2/bin
+
+export PATH=$PATH
+
+# direnv
 eval "$(direnv hook zsh)"
 
+# openssl libconv libpcap
+export LDFLAGS="-L/usr/local/opt/openssl/lib -L/usr/local/opt/libiconv/lib -L/usr/local/opt/libpcap/lib"
+export CPPFLAGS="-I/usr/local/opt/openssl/include -I/usr/local/opt/libiconv/include -I/usr/local/opt/libpcap/include"
+export PKG_CONFIG_PATH=PKG_CONFIG_PATH:/usr/local/opt/openssl/lib/pkgconfig
 
+# pattern match history
+bindkey '^R' history-incremental-pattern-search-backward
 
-### ola's alias
-alias gp='git pull --rebase'
-alias gc='git commit -a'
-alias gpu='git push'
-alias gd='git diff'
+# C and Cpp include/lib dirs
+export C_INCLUDE_PATH=/usr/local/include
+export CPLUS_INCLUDE_PATH=/usr/local/include
+export C_LIB_PATH=/usr/local/lib
+export CPLUS_LIB_PATH=/usr/local/lib
+# docbook
 export XML_CATALOG_FILES=/usr/local/etc/xml/catalog
 
-### ccache
-export PATH=${PATH}:/usr/local/opt/ccache/libexec
-export PATH=${PATH}:/usr/local/opt/llvm/bin
-
-### android
+# Java
+export JAVA_HOME=/Library/Java/JavaVirtualMachines/jdk1.8.0_05.jdk/Contents/Home/
+# Android
 export ANDROID_HOME=~/dev/adt-bundle/sdk/
+
+# NodeJS
+export NVM_DIR="/Users/twer/.nvm"
+[ -s "$NVM_DIR/nvm.sh" ] && . "$NVM_DIR/nvm.sh"  # This loads nvm
+
+# Locale
+export LC_ALL=en_US.UTF-8
+export LANG=en_US.UTF-8

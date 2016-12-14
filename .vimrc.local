@@ -55,20 +55,21 @@ nnoremap  <leader>fi :call CscopeFind('i', expand('<cword>'))<CR>
 " set clang complete options
 let g:clang_debug = 1
 let g:clang_library_path     = '/usr/local/opt/llvm/lib/libclang.dylib'
-" let g:clang_use_library      = 1
-" let g:clang_complete_auto    = 1
-" let g:clang_hl_errors        = 1
-" let g:clang_auto_select      = 1
-" let g:clang_complete_copen   = 1
-" let g:clang_complete_macros  = 1
-" let g:clang_complete_patters = 1
-" let g:clang_periodic_quickfix= 1
-" let g:clang_snippets         = 1
-" let g:clang_close_preview    = 1
-" let g:clang_user_options='-stdlib=libc++ -std=c++11 -IIncludePath'
-" set completeopt=menu,longest
+let g:clang_use_library      = 1
+let g:clang_complete_auto    = 1
+let g:clang_hl_errors        = 1
+let g:clang_auto_select      = 1
+let g:clang_complete_copen   = 1
+let g:clang_complete_macros  = 1
+let g:clang_complete_patters = 1
+let g:clang_periodic_quickfix= 1
+let g:clang_snippets         = 1
+let g:clang_close_preview    = 1
+let g:clang_user_options='-stdlib=libc++ -std=c++11 -IIncludePath'
+set completeopt=menu,longest
 let g:ycm_confirm_extra_conf = 0
-
+let g:ycm_python_binary_path = 'python'
+let g:cscope_silent = 1
 
 " set golang
 let g:go_fmt_command = "goimports"

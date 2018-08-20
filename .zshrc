@@ -49,11 +49,13 @@ export CLICOLOR=1
 export LSCOLORS=fxbxaxdxcxegedabagacad
 export TERM=xterm-color
 export GOPATH=$HOME/go/
+alias vim='mvim -v'
 alias tw='cd ~/talks'
 alias ta='cd ~/dev/TA-Probation'
 alias ec='cd ~/dev/ecool'
 alias ca='cd ~/dev/carnival'
 alias st='cd ~/dev/strike'
+alias sec='cd ~/dev/security'
 alias hl='cd ~/dev/hyperledger'
 alias dl='cd ~/dev/deeplearning'
 alias vr='cd ~/dev/vr'
@@ -61,32 +63,41 @@ alias ls='ls -a'
 alias ll='ls -al'
 alias cl='clear'
 alias git='nocorrect git'
-alias vim='nvim'
 alias chrome='open -a /Applications/Google\ Chrome.app'
-alias ga='echo $(python /Users/twer/dev/bash-vpn/totp.py) | pbcopy'
-alias gita='echo $(python /Users/twer/dev/bash-vpn/totp_github.py) | pbcopy'
+alias ga='echo $(python2 /Users/twer/dev/bash-vpn/totp.py) | pbcopy'
+alias gita='echo $(python2 /Users/twer/dev/bash-vpn/totp_github.py) | pbcopy'
 alias gdbnew='/usr/local/Cellar/gdb/7.9.1/bin/gdb'
 alias killl='kill -9'
+alias ke='cd ~/dev/security/kernel/'
 
 # Travis
 [ -f /Users/twer/.travis/travis.sh ] && source /Users/twer/.travis/travis.sh
 
 # PATH
-PATH=$PATH:/usr/bin:/bin:/usr/sbin:/sbin:/usr/local/bin:~/bin:/Users/twer/.local/bin:/usr/local/sbin
-PATH=$PATH:$GOPATH/bin
+PATH=/usr/local/bin:/usr/bin:/bin:/usr/sbin:/sbin:~/bin:/Users/twer/.local/bin:/usr/local/sbin:$PATH
+PATH=/usr/local/opt/openssl/bin:$PATH
+PATH=$GOPATH/bin:$PATH
 ## RVM
-PATH=$PATH:$HOME/.rvm/bin
+PATH=$HOME/.rvm/bin:$PATH
 ## Postgres
-PATH=$PATH:/Applications/Postgres.app/Contents/Versions/9.4/bin
+PATH=/Applications/Postgres.app/Contents/Versions/9.4/bin:$PATH
 ## Heroku
-PATH=$PATH:/usr/local/heroku/bin
+PATH=/usr/local/heroku/bin:$PATH
 ## PhoneGap
-PATH=$PATH:~/dev/adt-bundle/sdk/platform-tools:~/dev/adt-bundle/sdk/tools
+PATH=~/dev/adt-bundle/sdk/platform-tools:~/dev/adt-bundle/sdk/tools:$PATH
 ## ccache
-PATH=$PATH:/usr/local/opt/ccache/libexec
-PATH=$PATH:/usr/local/opt/llvm/bin
+# PATH=$PATH:/usr/local/opt/ccache/libexec
+# PATH=$PATH:/usr/local/opt/llvm/bin
 ## Conda
-PATH=$PATH:/Users/twer/miniconda2/bin
+PATH=/Users/twer/miniconda2/bin$PATH
+## qt
+export PATH="/usr/local/opt/qt/bin:$PATH"
+## llvm
+export PATH="/usr/local/opt/llvm/bin:$PATH"
+## pip2.7
+export PATH="/Users/twer/Library/Python/2.7/bin:$PATH"
+## pip3.6
+export PATH="/Users/twer/Library/Python/3.6/bin:$PATH"
 
 export PATH=$PATH
 
@@ -94,9 +105,10 @@ export PATH=$PATH
 eval "$(direnv hook zsh)"
 
 # openssl libconv libpcap
-export LDFLAGS="-L/usr/local/opt/openssl/lib -L/usr/local/opt/libiconv/lib -L/usr/local/opt/libpcap/lib"
-export CPPFLAGS="-I/usr/local/opt/openssl/include -I/usr/local/opt/libiconv/include -I/usr/local/opt/libpcap/include"
-export PKG_CONFIG_PATH=PKG_CONFIG_PATH:/usr/local/opt/openssl/lib/pkgconfig
+# export LDFLAGS="-L/usr/local/opt/openssl/lib -L/usr/local/opt/libiconv/lib -L/usr/local/opt/libpcap/lib -L/usr/local/Cellar/libsodium/1.0.11/lib -L/usr/local/opt/qt/lib"
+# export CFLAGS="-I/usr/local/opt/openssl/include -I/usr/local/opt/libiconv/include -I/usr/local/opt/libpcap/include -I/usr/local/Cellar/libsodium/1.0.11/include -I/usr/local/Cellar/libsodium/1.0.11/include/sodium"
+# export CPPFLAGS="-I/usr/local/opt/openssl/include -I/usr/local/opt/libiconv/include -I/usr/local/opt/libpcap/include -I/usr/local/Cellar/libsodium/1.0.11/include -I/usr/local/Cellar/libsodium/1.0.11/include/sodium -I/usr/local/opt/qt/include"
+# export PKG_CONFIG_PATH=PKG_CONFIG_PATH:/usr/local/opt/openssl/lib/pkgconfig:/usr/local/opt/qt/lib/pkgconfig
 
 # pattern match history
 bindkey '^R' history-incremental-pattern-search-backward
@@ -115,9 +127,15 @@ export JAVA_HOME=/Library/Java/JavaVirtualMachines/jdk1.8.0_05.jdk/Contents/Home
 export ANDROID_HOME=~/dev/adt-bundle/sdk/
 
 # NodeJS
-export NVM_DIR="/Users/twer/.nvm"
-[ -s "$NVM_DIR/nvm.sh" ] && . "$NVM_DIR/nvm.sh"  # This loads nvm
 
 # Locale
 export LC_ALL=en_US.UTF-8
 export LANG=en_US.UTF-8
+
+# PhantomJS
+export PHANTOMJS_BIN=/usr/local/Cellar/phantomjs/2.1.1/bin/phantomjs
+export PATH="/usr/local/opt/curl/bin:$PATH"
+
+# nvm
+export NVM_DIR="$HOME/.nvm"
+. "/usr/local/opt/nvm/nvm.sh"

@@ -5,8 +5,8 @@ ZSH=$HOME/.oh-my-zsh
 # Look in ~/.oh-my-zsh/themes/
 # Optionally, if you set this to "random", it'll load a random theme each
 # time that oh-my-zsh is loaded.
-ZSH_THEME="agnoster"
-DEFAULT_USER="twer"
+ZSH_THEME="powerlevel10k/powerlevel10k"
+POWERLEVEL9K_MODE="awesome-patched"
 
 # Example aliases
 # alias zshconfig="mate ~/.zshrc"
@@ -40,8 +40,8 @@ DEFAULT_USER="twer"
 
 # Which plugins would you like to load? (plugins can be found in ~/.oh-my-zsh/plugins/*)
 # Custom plugins may be added to ~/.oh-my-zsh/custom/plugins/
-# Example format: plugins=(rails git textmate ruby lighthouse)
-plugins=(git svn ruby rails brew gem rvm bundle mvn sbt jekyll gpg2 haxe go)
+# Example format: plugins=(git textmate ruby lighthouse)
+plugins=(git svn ruby brew gem rvm mvn sbt go)
 
 source $ZSH/oh-my-zsh.sh
 
@@ -100,9 +100,6 @@ export PATH="/Users/twer/Library/Python/3.6/bin:$PATH"
 
 export PATH=$PATH
 
-# direnv
-eval "$(direnv hook zsh)"
-
 # openssl libconv libpcap
 # export LDFLAGS="-L/usr/local/opt/openssl/lib -L/usr/local/opt/libiconv/lib -L/usr/local/opt/libpcap/lib -L/usr/local/Cellar/libsodium/1.0.11/lib -L/usr/local/opt/qt/lib"
 # export CFLAGS="-I/usr/local/opt/openssl/include -I/usr/local/opt/libiconv/include -I/usr/local/opt/libpcap/include -I/usr/local/Cellar/libsodium/1.0.11/include -I/usr/local/Cellar/libsodium/1.0.11/include/sodium"
@@ -136,3 +133,6 @@ export PHANTOMJS_BIN=/usr/local/Cellar/phantomjs/2.1.1/bin/phantomjs
 export PATH="/usr/local/opt/curl/bin:$PATH"
 
 [ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
+
+# To customize prompt, run `p10k configure` or edit ~/.p10k.zsh.
+[[ ! -f ~/.p10k.zsh ]] || source ~/.p10k.zsh

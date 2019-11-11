@@ -1,3 +1,34 @@
+call plug#begin('~/.vim/plugged')
+
+" Make sure you use single quotes
+
+" Shorthand notation; fetches https://github.com/junegunn/vim-easy-align
+Plug 'junegunn/vim-easy-align'
+
+" Multiple Plug commands can be written in a single line using | separators
+Plug 'SirVer/ultisnips' | Plug 'honza/vim-snippets'
+
+" On-demand loading
+Plug 'scrooloose/nerdtree'
+
+Plug 'fatih/vim-go'
+Plug 'nsf/gocode'
+Plug 'junegunn/fzf', { 'dir': '~/.fzf', 'do': './install --all' }
+Plug 'junegunn/fzf.vim'
+Plug 'terryma/vim-multiple-cursors'
+
+
+" Initialize plugin system
+call plug#end()
+
+map <C-e> :NERDTreeToggle<CR>
+map <C-p> :Files<CR>
+
+let g:go_fmt_command = "goimports"
+let g:go_fold_enable = ['block', 'import', 'varconst', 'package_comment']
+set wrap!
+
+
 filetype plugin indent on
 set nocursorline " don't highlight current line
 set foldmethod=syntax

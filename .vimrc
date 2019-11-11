@@ -110,3 +110,4 @@ let g:go_highlight_structs = 1
 let g:go_highlight_operators = 1
 let g:go_highlight_build_constraints = 1
 au FileType go nmap <Leader>ds <Plug>(go-def-split)
+set clipboard=unnamed

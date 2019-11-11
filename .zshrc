@@ -49,7 +49,6 @@ export CLICOLOR=1
 export LSCOLORS=fxbxaxdxcxegedabagacad
 export TERM=xterm-color
 export GOPATH=$HOME/go/
-alias vim='mvim -v'
 alias tw='cd ~/talks'
 alias ta='cd ~/dev/TA-Probation'
 alias ec='cd ~/dev/ecool'
@@ -136,6 +135,4 @@ export LANG=en_US.UTF-8
 export PHANTOMJS_BIN=/usr/local/Cellar/phantomjs/2.1.1/bin/phantomjs
 export PATH="/usr/local/opt/curl/bin:$PATH"
 
-# nvm
-export NVM_DIR="$HOME/.nvm"
-. "/usr/local/opt/nvm/nvm.sh"
+[ -f ~/.fzf.zsh ] && source ~/.fzf.zsh

@@ -25,7 +25,8 @@ map <C-e> :NERDTreeToggle<CR>
 map <C-p> :Files<CR>
 
 let g:go_fmt_command = "goimports"
-let g:go_fold_enable = ['block', 'import', 'varconst', 'package_comment']
+"let g:go_fold_enable = ['block', 'import', 'varconst', 'package_comment']
+let g:go_fold_enable = ['import', 'package_comment']
 set wrap!
 
 
@@ -109,5 +110,14 @@ let g:go_highlight_methods = 1
 let g:go_highlight_structs = 1
 let g:go_highlight_operators = 1
 let g:go_highlight_build_constraints = 1
-au FileType go nmap <Leader>ds <Plug>(go-def-split)
+au FileType go nmap <leader>i <Plug>(go-def)
+au FileType go nmap <leader>t :GoAlternate<CR>
+au FileType go nmap <leader>b :GoDebugBreakpoint<CR>
+au FileType go nmap <C-S-r>r <Plug>(go-run)
+au FileType go nmap <C-S-t>t <Plug>(go-test)
+au FileType go nmap <leader><C-S-r> :GoDebugStart
+au FileType go nmap <leader><C-S-t> :GoDebugTest
+au FileType go nmap <S-Down> <Plug>(go-debug-next)
+au FileType go nmap <S-Right> <Plug>(go-debug-continue)
+au FileType go nmap <S-Up> <Plug>(go-debug-stop)
 set clipboard=unnamed

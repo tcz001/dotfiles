@@ -1,5 +1,7 @@
 # Path to your oh-my-zsh configuration.
 ZSH=$HOME/.oh-my-zsh
+CASE_SENSITIVE="false"
+
 
 # Set name of the theme to load.
 # Look in ~/.oh-my-zsh/themes/
@@ -41,7 +43,7 @@ POWERLEVEL9K_MODE="awesome-patched"
 # Which plugins would you like to load? (plugins can be found in ~/.oh-my-zsh/plugins/*)
 # Custom plugins may be added to ~/.oh-my-zsh/custom/plugins/
 # Example format: plugins=(git textmate ruby lighthouse)
-plugins=(git svn ruby brew gem rvm mvn sbt go)
+plugins=(git svn ruby brew gem rvm mvn sbt golang)
 
 source $ZSH/oh-my-zsh.sh
 
@@ -63,8 +65,12 @@ alias ll='ls -al'
 alias cl='clear'
 alias git='nocorrect git'
 alias chrome='open -a /Applications/Google\ Chrome.app'
-alias ga='echo $(python2 /Users/twer/dev/bash-vpn/totp.py) | pbcopy'
-alias gita='echo $(python2 /Users/twer/dev/bash-vpn/totp_github.py) | pbcopy'
+alias ga='echo $(python3 /Users/fanjiang/dev/bash-vpn/totp.py) | pbcopy'
+alias gita='echo $(python3 /Users/fanjiang/dev/bash-vpn/totp_github.py) | pbcopy'
+alias gitlaba='echo $(python3 /Users/fanjiang/dev/bash-vpn/totp_gitlab.py) | pbcopy'
+alias seraigithuba='echo $(python3 /Users/fanjiang/dev/bash-vpn/totp_serai_github.py) | pbcopy'
+alias seraia='echo $(python3 /Users/fanjiang/dev/bash-vpn/totp_serai_okta.py) | pbcopy'
+alias lulualia='echo $(python3 /Users/fanjiang/dev/bash-vpn/totp_luluali.py) | pbcopy'
 alias gdbnew='/usr/local/Cellar/gdb/7.9.1/bin/gdb'
 alias killl='kill -9'
 alias ke='cd ~/dev/security/kernel/'
@@ -118,9 +124,17 @@ export CPLUS_LIB_PATH=/usr/local/lib
 export XML_CATALOG_FILES=/usr/local/etc/xml/catalog
 
 # Java
-export JAVA_HOME=/Library/Java/JavaVirtualMachines/jdk1.8.0_05.jdk/Contents/Home/
+#export JAVA_HOME=/Library/Java/JavaVirtualMachines/jdk1.8.0_05.jdk/Contents/Home/
+export JAVA_HOME=/usr/local/opt/openjdk@17/
+export PATH="/usr/local/opt/openjdk@17/bin:$PATH" >> ~/.zshrc
+jdk() {
+        version=$1
+        export JAVA_HOME=$(/usr/libexec/java_home -v"$version");
+        java -version
+}
 # Android
-export ANDROID_HOME=~/dev/adt-bundle/sdk/
+export ANDROID_HOME=/Users/fanjiang/Library/Android/sdk
+export PATH="$ANDROID_HOME/tools/bin:$PATH"
 
 # NodeJS
 
@@ -136,3 +150,12 @@ export PATH="/usr/local/opt/curl/bin:$PATH"
 
 # To customize prompt, run `p10k configure` or edit ~/.p10k.zsh.
 [[ ! -f ~/.p10k.zsh ]] || source ~/.p10k.zsh
+export ARM_TOOL_CHAIN_HOME=/Users/twer/dev/SynestiaOS/gcc-arm-none-eabi-9-2019-q4-major/bin
+export PATH=$PATH:$ARM_TOOL_CHAIN_HOME
+
+# Gcloud
+source "/usr/local/Caskroom/google-cloud-sdk/latest/google-cloud-sdk/path.zsh.inc"
+source "/usr/local/Caskroom/google-cloud-sdk/latest/google-cloud-sdk/completion.zsh.inc"
+
+## graalvm
+export PATH="/opt/graalvm/Contents/Home/bin:$PATH"

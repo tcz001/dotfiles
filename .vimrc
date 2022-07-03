@@ -11,11 +11,15 @@ Plug 'SirVer/ultisnips' | Plug 'honza/vim-snippets'
 " On-demand loading
 Plug 'scrooloose/nerdtree'
 
+let NERDTreeShowHidden=1
+
 Plug 'fatih/vim-go'
 Plug 'nsf/gocode'
 Plug 'junegunn/fzf', { 'dir': '~/.fzf', 'do': './install --all' }
 Plug 'junegunn/fzf.vim'
 Plug 'terryma/vim-multiple-cursors'
+Plug 'tpope/vim-fugitive'
+Plug 'ARM9/arm-syntax-vim'
 
 
 " Initialize plugin system
@@ -25,8 +29,8 @@ map <C-e> :NERDTreeToggle<CR>
 map <C-p> :Files<CR>
 
 let g:go_fmt_command = "goimports"
-"let g:go_fold_enable = ['block', 'import', 'varconst', 'package_comment']
-let g:go_fold_enable = ['import', 'package_comment']
+let g:go_fold_enable = ['block', 'import', 'varconst', 'package_comment']
+"let g:go_fold_enable = ['import', 'package_comment']
 set wrap!
 
 
@@ -121,3 +125,7 @@ au FileType go nmap <S-Down> <Plug>(go-debug-next)
 au FileType go nmap <S-Right> <Plug>(go-debug-continue)
 au FileType go nmap <S-Up> <Plug>(go-debug-stop)
 set clipboard=unnamed
+
+au BufNewFile,BufRead *.s,*.S set filetype=arm " arm = armv6/7
+" ctags
+set tags=./tags,tags;$HOME
